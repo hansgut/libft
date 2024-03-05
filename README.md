@@ -1,5 +1,5 @@
 # LIBFT
 
-make
-make fclean
-make bonus
+## make
+## make fclean
+## make bonus
