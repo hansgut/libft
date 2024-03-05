@@ -82,7 +82,7 @@ ${NAME}:	${OBJS}
 
 all:		${NAME}
 
-bonus:		${BONUS_OBJS}
+bonus:		${OBJS} ${BONUS_OBJS}
 			@echo "$(GREEN)Compilation ${CLR_RMV}of ${YELLOW}$(NAME) ${CLR_RMV}..."
 			ar rcs ${NAME} ${BONUS_OBJS}
 			ranlib ${NAME}
