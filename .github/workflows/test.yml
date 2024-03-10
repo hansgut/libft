@@ -14,14 +14,7 @@ jobs:
     - name: Checkout repo
       uses: actions/checkout@v4
     - name: Add so to Makefile
-      uses: DamianReeves/write-file-action@master
-      with:
-        path: Makefile
-        contents: |
-          so:
-            $(CC) -nostartfiles -fPIC $(CFLAGS) $(SRC)
-            gcc -nostartfiles -shared -o libft.so $(OBJ)
-        write-mode: append
+      run: echo -e "so:\n\t\t\t\$(CC) -nostartfiles -fPIC \$(FLAGS) \$(SRCS)\n\t\t\tgcc -nostartfiles -shared -o libft.so \$(OBJS)\n" | sed '84r /dev/stdin' Makefile > temp && mv temp Makefile
     - name: Download tests repo
       run: |
         cd ..
