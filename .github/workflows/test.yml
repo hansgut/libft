@@ -30,4 +30,5 @@ jobs:
       run: |
         cd ..
         cd libft-unit-test
-        sudo bash run_test
+        ls -la
+        ./run_test
