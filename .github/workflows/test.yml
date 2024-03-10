@@ -21,9 +21,13 @@ jobs:
       run: |
         cd ..
         git clone https://github.com/alelievr/libft-unit-test.git libft-unit-test
-    - name: Run tests
+    - name: Build tests
       run: |
         cd ..
         cd libft-unit-test
         make
-            
+    - name: Run tests
+      run: |
+        cd ..
+        cd libft-unit-test
+        bash run_test
