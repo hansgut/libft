@@ -6,13 +6,13 @@
 /*   By: jcielesz <jcielesz@student.42warsaw.pl>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/27 00:18:52 by jcielesz          #+#    #+#             */
-/*   Updated: 2024/03/05 03:43:18 by jcielesz         ###   ########.fr       */
+/*   Updated: 2024/03/10 18:37:02 by jcielesz         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-void	*ft_memcpy(void *restrict dst, const void *restrict src, size_t n)
+void	*ft_memcpy(void *dst, const void *src, size_t n)
 {
 	void	*dest_p;
 
