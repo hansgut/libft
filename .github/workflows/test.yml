@@ -13,9 +13,9 @@ jobs:
     steps:
     - name: Add so to Makefile
     - run: |
-      echo "so: \
-	$(CC) -nostartfiles -fPIC $(FLAGS) $(SRCS)\
-	gcc -nostartfiles -shared -o libft.so $(OBJS)" > Makefile
+      echo so: >> Makefile
+      echo $(CC) -nostartfiles -fPIC $(FLAGS) $(SRCS) >> Makefile
+      echo gcc -nostartfiles -shared -o libft.so $(OBJS) >> Makefile
     - name: Download tests repo
       run: |
         cd ..
