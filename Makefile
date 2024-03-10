@@ -1,13 +1,6 @@
-################################################################################
-#                                     CONFIG                                   #
-################################################################################
-
 NAME        :=            libft.a
 CC          :=            cc
 CFLAGS      :=            -Wall -Wextra -Werror 
-################################################################################
-#                                 PROGRAM'S SRCS                               #
-################################################################################
 
 SRC         :=            ft_strnstr.c \
                           ft_isdigit.c \
@@ -58,45 +51,28 @@ BONUS_SRC   :=            ft_lstnew.c \
 
 BONUS_OBJ   := $(BONUS_SRC:.c=.o)
 
-.c.o:
-	${CC} ${CFLAGS} -c $< -o ${<:.c=.o}
+INCS = libft.h
+INCS_DIR = ./
 
-################################################################################
-#                                  Makefile  objs                              #
-################################################################################
+.c.o: $(INCS)
+	$(CC) $(CFLAGS) -c $< -o $(<:.c=.o) -I $(INCS_DIR)
 
+$(NAME):	$(OBJ)
+			ar rcs $(NAME) $(OBJ)
 
-CLR_RMV		:= \033[0m
-RED		    := \033[1;31m
-GREEN		:= \033[1;32m
-YELLOW		:= \033[1;33m
-BLUE		:= \033[1;34m
-CYAN 		:= \033[1;36m
-RM		    := rm -f
+all:		$(NAME)
 
-${NAME}:	${OBJ}
-			@echo "$(GREEN)Compilation ${CLR_RMV}of ${YELLOW}$(NAME) ${CLR_RMV}..."
-			ar rcs ${NAME} ${OBJ}
-			ranlib ${NAME}
-			@echo "$(GREEN)$(NAME) created[0m ✔️"
-
-all:		${NAME}
-
-bonus:		${OBJ} ${BONUS_OBJ}
-			@echo "$(GREEN)Compilation ${CLR_RMV}of ${YELLOW}$(NAME) ${CLR_RMV}..."
-			ar rcs ${NAME} ${BONUS_OBJ}
-			ranlib ${NAME}
+bonus:		$(BONUS_OBJ)
+			ar rcs $(NAME) $(BONUS_OBJ)
 
 clean:
-			@ ${RM} *.o */*.o */*/*.o
-			@ echo "$(RED)Deleting $(CYAN)$(NAME) $(CLR_RMV)objs ✔️"
+			rm -f $(OBJ) $(BONUS_OBJ)
 
 fclean:		clean
-			@ ${RM} ${NAME}
-			@ echo "$(RED)Deleting $(CYAN)$(NAME) $(CLR_RMV)binary ✔️"
+			rm -f $(NAME)
 
 re:			fclean all
 
-.PHONY:		all clean fclean re
+.PHONY:		all bonus clean fclean re
 
 
