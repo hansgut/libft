@@ -1,4 +1,4 @@
-name: C/C++ CI
+name: libft
 
 on:
   push:
@@ -11,11 +11,17 @@ jobs:
     name: Test with libft-unit-test on ubuntu-latest
     runs-on: ubuntu-latest
     steps:
+    - name: Checkout repo
+      uses: actions/checkout@v4
     - name: Add so to Makefile
-    - run: |
-      echo so: >> Makefile
-      echo $(CC) -nostartfiles -fPIC $(FLAGS) $(SRCS) >> Makefile
-      echo gcc -nostartfiles -shared -o libft.so $(OBJS) >> Makefile
+      uses: DamianReeves/write-file-action@master
+      with:
+        path: Makefile
+        contents: |
+          so:
+            $(CC) -nostartfiles -fPIC $(CFLAGS) $(SRC)
+            gcc -nostartfiles -shared -o libft.so $(OBJ)
+        write-mode: append
     - name: Download tests repo
       run: |
         cd ..
