@@ -14,7 +14,7 @@ jobs:
     - name: Checkout repo
       uses: actions/checkout@v4
     - name: Add so to Makefile
-      run: echo -e "so:\n\t\t\t\$(CC) -nostartfiles -fPIC \$(CFLAGS) \$(SRC) \$(BONUS_SRC)\n\t\t\tgcc -nostartfiles -shared -o libft.so \$(OBJ) \$(BONUS_OBJ)\n" | sed '84r /dev/stdin' Makefile > temp && mv temp Makefile
+      run: awk '/^all:/ { print; print ""; print "so:"; print "\t\t\t$(CC) -nostartfiles -fPIC $(CFLAGS) $(SRC) $(BONUS_SRC)"; print "\t\t\tgcc -nostartfiles -shared -o libft.so $(OBJ) $(BONUS_OBJ)"; next } 1' Makefile > temp && mv temp Makefile
     - name: Install libbsd-dev
       run: sudo apt-get install -y libbsd-dev
     - name: Download tests repo
