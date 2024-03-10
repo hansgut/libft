@@ -23,8 +23,7 @@ jobs:
         git clone https://github.com/alelievr/libft-unit-test.git libft-unit-test
     - name: Run tests
       run: |
-        pwd
-        ls -al
+        cd ..
         cd libft-unit-test
         make
             
