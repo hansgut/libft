@@ -15,14 +15,16 @@ jobs:
       uses: actions/checkout@v4
     - name: Add so to Makefile
       run: echo -e "so:\n\t\t\t\$(CC) -nostartfiles -fPIC \$(FLAGS) \$(SRCS)\n\t\t\tgcc -nostartfiles -shared -o libft.so \$(OBJS)\n" | sed '84r /dev/stdin' Makefile > temp && mv temp Makefile
+    - name: Install libbsd-dev
+      run: sudo apt-get install -y libbsd-dev
     - name: Download tests repo
       run: |
         cd ..
         git clone https://github.com/alelievr/libft-unit-test.git libft-unit-test
-    - name: Install libbsd-dev
-      run: sudo apt-get install -y libbsd-dev
     - name: Run tests
       run: |
+        pwd
+        ls -al
         cd libft-unit-test
         make
             
