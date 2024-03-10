@@ -6,7 +6,7 @@
 /*   By: jcielesz <jcielesz@student.42warsaw.pl>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/27 00:15:25 by jcielesz          #+#    #+#             */
-/*   Updated: 2024/03/05 03:42:47 by jcielesz         ###   ########.fr       */
+/*   Updated: 2024/03/10 21:20:04 by jcielesz         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,12 +14,5 @@
 
 void	ft_bzero(void *s, size_t n)
 {
-	size_t	i;
-
-	i = 0;
-	while (i < n)
-	{
-		((char *)s)[i] = 0;
-		i++;
-	}
+	ft_memset(s, 0, n);
 }
