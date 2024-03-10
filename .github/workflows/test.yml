@@ -1,0 +1,27 @@
+name: C/C++ CI
+
+on:
+  push:
+    branches: [ "main" ]
+  pull_request:
+    branches: [ "main" ]
+
+jobs:
+  test:
+    name: Test with libft-unit-test on ubuntu-latest
+    runs-on: ubuntu-latest
+    steps:
+    - name: Add so to Makefile
+    - run: |
+      echo "so: \
+	$(CC) -nostartfiles -fPIC $(FLAGS) $(SRCS)\
+	gcc -nostartfiles -shared -o libft.so $(OBJS)" > Makefile
+    - name: Download tests repo
+      run: |
+        cd ..
+        git clone https://github.com/alelievr/libft-unit-test.git libft-unit-test
+    - name: Run tests
+      run: |
+        cd libft-unit-test
+        make
+            
