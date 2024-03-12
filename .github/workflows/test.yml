@@ -17,7 +17,18 @@ jobs:
       run: awk '/^all:/ { print; print ""; print "so:"; print "\t\t\t$(CC) -nostartfiles -fPIC $(CFLAGS) $(SRC) $(BONUS_SRC)"; print "\t\t\tgcc -nostartfiles -shared -o libft.so $(OBJ) $(BONUS_OBJ)"; next } 1' Makefile > temp && mv temp Makefile
     - name: Install libbsd-dev
       run: sudo apt-get install -y libbsd-dev
-    - name: Download tests repo
+    - name: Download tests repo war machine
+      run: |
+        cd ..
+        git clone https://github.com/0x050f/libft-war-machine.git libft-war-machine
+    - name: Run war machine tests
+      run: |
+        cd ..
+        cd libft-war-machine
+        cd bash grademe.sh
+        sed -i 's#PATH_LIBFT="../"#PATH_LIBFT=../libft#' Makefile
+        cd bash grademe.sh
+    - name: Download tests repo 1
       run: |
         cd ..
         git clone https://github.com/alelievr/libft-unit-test.git libft-unit-test
