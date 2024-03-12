@@ -6,7 +6,7 @@
 /*   By: jcielesz <jcielesz@student.42warsaw.pl>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/29 23:33:18 by jcielesz          #+#    #+#             */
-/*   Updated: 2024/03/05 03:46:37 by jcielesz         ###   ########.fr       */
+/*   Updated: 2024/03/12 17:24:55 by jcielesz         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,12 +16,14 @@ char	*ft_strrchr(const char *s, int c)
 {
 	int	i;
 
-	i = ft_strlen(s);
+	i = 0;
+	while (s[i])
+		i++;
 	while (i >= 0)
 	{
-		if (s[i] == c)
-			return ((char *)&s[i]);
+		if (s[i] == (char)c)
+			return ((char *)(s + i));
 		i--;
 	}
-	return (0);
+	return (NULL);
 }

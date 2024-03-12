@@ -6,7 +6,7 @@
 /*   By: jcielesz <jcielesz@student.42warsaw.pl>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/29 23:15:35 by jcielesz          #+#    #+#             */
-/*   Updated: 2024/03/05 03:44:57 by jcielesz         ###   ########.fr       */
+/*   Updated: 2024/03/12 17:31:19 by jcielesz         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,7 +18,7 @@ size_t	ft_strlcat(char *dst, const char *src, size_t dstsize)
 	size_t	dst_len;
 
 	if (dstsize == 0)
-		return (0);
+		return (ft_strlen(src));
 	src_len = ft_strlen(src);
 	dst_len = ft_strlen(dst);
 	if (dst_len >= dstsize)
