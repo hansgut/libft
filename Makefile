@@ -1,5 +1,5 @@
 NAME        :=            libft.a
-CC          :=            cc
+CC          :=            clang
 CFLAGS      :=            -Wall -Wextra -Werror 
 
 SRC         :=            ft_strnstr.c \
