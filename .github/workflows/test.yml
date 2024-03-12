@@ -25,7 +25,7 @@ jobs:
       run: |
         cd ..
         cd libft-unit-test
-        make
+        make CC=clang
     - name: Run tests
       run: |
         cd ..
