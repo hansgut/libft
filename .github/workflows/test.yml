@@ -25,7 +25,7 @@ jobs:
       run: |
         cd ..
         cd libft-war-machine
-        cd bash grademe.sh
+        bash grademe.sh
         sed -i 's#PATH_LIBFT="../"#PATH_LIBFT=../libft#' Makefile
         cd bash grademe.sh
     - name: Download tests repo 1
